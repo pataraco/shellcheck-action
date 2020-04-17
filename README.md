@@ -60,3 +60,7 @@ jobs:
 	  # good to exclude .github because the script will find/check there
           EXCLUDE_DIRS: .github
 ```
+
+## Inspired By
+
+This project was copied/modied from: [ludeeus/action-shellcheck](https://github.com/ludeeus/action-shellcheck)
