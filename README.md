@@ -8,7 +8,12 @@ _Run shellcheck on ALL shell files in the repository via GitHub actions_
 name: Shell Lint
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
+    branches:
+      - master
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
