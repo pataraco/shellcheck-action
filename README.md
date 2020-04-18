@@ -20,7 +20,10 @@ jobs:
       - name: Check Shell Files
         uses: pataraco/shellcheck-action@v0.0.0
         env:
-          EXCLUDE_DIRS: dir_name
+          EXCLUDE_DIRS: dir_name_1 dir_name_2 # dirs anywhere in the path
+          # EXCLUDE_DIRS: ./dir_name          # specific directory
+          # EXCLUDE_DIRS: ./path_to/dir_name  # specific deeper directory
+          # EXCLUDE_DIRS: ./dir_1 dir_2       # combination of above
 ```
 
 ## Example (using a private repo)

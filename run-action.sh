@@ -27,9 +27,11 @@ fi
 excludes=()
 for dir in ${EXCLUDE_DIRS}; do
    # all find results start with './'
-   [[ ${dir#./*} != "$dir" ]] || dir="./${dir}"
+   # look for beginning "./" for specific dir to exclude, otherwise match all
+   [[ ${dir%%[^./]*} != "./" ]] && dir="*/${dir}"
    excludes+=(! -path "$dir/*" -a)
 done
+# echo "debug: excludes='${excludes[*]}'"
 
 echo "finding and linting all shell scripts/files via shellcheck..."
 find \
@@ -66,7 +68,7 @@ find \
             echo "[PASS]: shellcheck - successfully linted: $f"
          else
             err=$?
-            echo "[FAIL]: shellcheck - found issues in: $f"
+            echo >&2 "[FAIL]: shellcheck - found issues in: $f"
          fi
       done
       echo $err > $tmp_file
@@ -85,7 +87,7 @@ find . "${excludes[@]}" -type f ! -name '*.*' -perm ${pp}111 \
             echo "[PASS]: shellcheck - successfully linted: $f"
          else
             err=$?
-            echo "[FAIL]: shellcheck - found issues in: $f"
+            echo >&2 "[FAIL]: shellcheck - found issues in: $f"
          fi
       done
       echo $err > $tmp_file
