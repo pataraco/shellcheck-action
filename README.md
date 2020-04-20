@@ -1,6 +1,7 @@
-# SHELLCHECK GitHub Action
+![Shell Lint](https://github.com/pataraco/shellcheck-action/workflows/Shell%20Lint/badge.svg)
+# ShellCheck GitHub Action
 
-_Run shellcheck on ALL shell files in the repository via GitHub actions_
+_Run [shellcheck](https://github.com/koalaman/shellcheck) on ALL shell files in the repository via GitHub actions_
 
 ## Example (using this public repo)
 
