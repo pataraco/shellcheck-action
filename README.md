@@ -1,6 +1,6 @@
 # ShellCheck GitHub Action
 
-![Version](https://img.shields.io/github/v/release/pataraco/shellcheck-action?style=flat-square&logo=github)
+![Version](https://img.shields.io/github/v/release/pataraco/shellcheck-action?label=Release&style=flat-square&logo=github)
  ![Shell Lint](https://github.com/pataraco/shellcheck-action/workflows/Shell%20Lint/badge.svg)
 
 _Run [shellcheck](https://github.com/koalaman/shellcheck) on ALL shell files in the repository via GitHub actions_
