@@ -14,6 +14,7 @@ jobs:
     name: Shell Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Check Shell Files
-        uses: pataraco/shellcheck-action@v0.1.0
+        # dogfood the action as defined in this repo (tests the PR's own code)
+        uses: ./

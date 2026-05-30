@@ -1,0 +1,26 @@
+name: 'ShellCheck (all shell files)'
+description: 'Run ShellCheck against every shell script/file in the repository.'
+author: 'pataraco'
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
+inputs:
+  exclude_dirs:
+    description: 'Space-separated directory names or paths to exclude (e.g. ".github vendor" or "./build").'
+    required: false
+    default: ''
+  severity:
+    description: 'Minimum severity to report and fail on: error, warning, info, or style.'
+    required: false
+    default: 'style'
+  external_sources:
+    description: 'Follow sourced files with `shellcheck -x` ("true" or "false").'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    EXCLUDE_DIRS: ${{ inputs.exclude_dirs }}
+    SEVERITY: ${{ inputs.severity }}
+    EXTERNAL_SOURCES: ${{ inputs.external_sources }}
