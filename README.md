@@ -20,6 +20,14 @@ findings show up on the PR diff — not just buried in the job log.
 > ShellCheck is pinned to a specific release in the image for reproducible runs
 > (see `SHELLCHECK_VERSION` in the `Dockerfile`).
 
+## Versioning
+
+**Pin to an exact release** — e.g. `pataraco/shellcheck-action@v1.0.0` — for
+reproducible builds. Let [Dependabot](https://docs.github.com/code-security/dependabot)
+(`github-actions` ecosystem) propose version bumps as PRs so updates stay
+reviewable. A floating major tag (`@v1`) also exists if you prefer to auto-track
+`v1.x` patches, at the cost of reproducibility.
+
 ## Example
 
 ```yaml
@@ -41,7 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Check Shell Files
-        uses: pataraco/shellcheck-action@v1
+        uses: pataraco/shellcheck-action@v1.0.0
         with:
           # all inputs are optional
           exclude_dirs: '.github vendor'   # dir names anywhere, or ./specific/path
@@ -53,7 +61,7 @@ Minimal (lint everything, fail on any finding):
 
 ```yaml
       - uses: actions/checkout@v5
-      - uses: pataraco/shellcheck-action@v1
+      - uses: pataraco/shellcheck-action@v1.0.0
 ```
 
 ## Example (using a private copy)
@@ -72,7 +80,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: SomeGitHubUser/shellcheck-action
-          ref: v1
+          ref: v1.0.0
           token: ${{ secrets.GH_PAT }}   # PAT with access to the private repo
           path: .github/actions/shellcheck-action
       - name: Check Shell Files
